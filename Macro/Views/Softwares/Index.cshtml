@@ -1,0 +1,165 @@
+﻿@model IEnumerable<Macro.Models.Software>
+
+@{
+    ViewData["Title"] = "Software";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Software</h1>
+<style>
+    #bodyContent {
+        margin-left: 0px;
+    }
+
+    div.dataTables_length {
+        margin-top: 1em;
+    }
+</style>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="display" id="Table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoftwareTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssignedTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PurchaseOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LicenseType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PurchaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supported)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupportExp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalKeys)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsedKeys)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LicenseKey)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoftwareTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssignedTo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurchaseOrder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicenseType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurchaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Supported)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupportExp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalKeys)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsedKeys)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicenseKey)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts{
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#Table').DataTable({
+            dom: 'Blfrtip',
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            buttons: {
+                buttons: [
+                    {
+                        extend: 'pdfHtml5',
+                        title: function () {
+                            return "Circuits";
+                        },
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        text: 'PDF',
+                        exportOptions: {
+                            modifier: {
+                                page: 'current'
+                            }
+                        }
+
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        title: function () {
+                            return "Circuits";
+                        },
+                        text: 'Excel',
+                        exportOptions: {
+                            modifier: {
+                                page: 'current'
+                            }
+                        }
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        title: function () {
+                            return "Circuits";
+                        },
+                        text: 'CSV',
+                        exportOptions: {
+                            modifier: {
+                                page: 'current'
+                            }
+                        }
+                    }
+                ],
+                dom: {
+                    button: {
+                        className: 'btn btn-primary'
+                    }
+                }
+
+            }
+        });
+    });
+    </script>
+}

@@ -1,0 +1,42 @@
+﻿@model Macro.Models.AdminView
+
+@{
+    ViewData["Title"] = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Settings</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="settingsAdmin.Scheduled" /> @Html.DisplayNameFor(model => model.settingsAdmin.Scheduled)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="settingsAdmin.MaintenanceDate" class="control-label"></label>
+                <input type="date" asp-for="settingsAdmin.MaintenanceDate" class="form-control" />
+                <span asp-validation-for="settingsAdmin.MaintenanceDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="settingsAdmin.MaintenanceTime" class="control-label"></label>
+                <input type="time" asp-for="settingsAdmin.MaintenanceTime" class="form-control" />
+                <span asp-validation-for="settingsAdmin.MaintenanceTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input id="greenbutton" type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+        <div class="form-group">
+            <a id="redbutton" asp-action="Clear" class="btn btn-danger">Reset</a>
+        </div>
+    </div>
+</div>
+
+@*<div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+

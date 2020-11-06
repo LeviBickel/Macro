@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>14845989-ba3c-4011-8ab3-cc721a4f668a</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200912032850_DiscoCircuitsInitial.cs" />
+    <Compile Remove="Migrations\20200912032850_DiscoCircuitsInitial.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Buttons-1.6.3\css\common.scss" />
+    <None Include="wwwroot\Buttons-1.6.3\css\mixins.scss" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.bootstrap.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.bootstrap.min.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.bootstrap4.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.bootstrap4.min.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.colVis.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.colVis.min.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.flash.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.flash.min.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.foundation.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.foundation.min.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.html5.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.html5.min.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.jqueryui.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.jqueryui.min.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.print.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.print.min.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.semanticui.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\buttons.semanticui.min.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\dataTables.buttons.js" />
+    <None Include="wwwroot\Buttons-1.6.3\js\dataTables.buttons.min.js" />
+    <None Include="wwwroot\Buttons-1.6.3\swf\flashExport.swf" />
+    <None Include="wwwroot\DataTables-1.10.21\js\dataTables.bootstrap.js" />
+    <None Include="wwwroot\DataTables-1.10.21\js\dataTables.bootstrap.min.js" />
+    <None Include="wwwroot\DataTables-1.10.21\js\dataTables.bootstrap4.js" />
+    <None Include="wwwroot\DataTables-1.10.21\js\dataTables.bootstrap4.min.js" />
+    <None Include="wwwroot\DataTables-1.10.21\js\dataTables.foundation.js" />
+    <None Include="wwwroot\DataTables-1.10.21\js\dataTables.foundation.min.js" />
+    <None Include="wwwroot\DataTables-1.10.21\js\dataTables.jqueryui.js" />
+    <None Include="wwwroot\DataTables-1.10.21\js\dataTables.jqueryui.min.js" />
+    <None Include="wwwroot\DataTables-1.10.21\js\dataTables.semanticui.js" />
+    <None Include="wwwroot\DataTables-1.10.21\js\dataTables.semanticui.min.js" />
+    <None Include="wwwroot\DataTables-1.10.21\js\jquery.dataTables.js" />
+    <None Include="wwwroot\DataTables-1.10.21\js\jquery.dataTables.min.js" />
+    <None Include="wwwroot\JSZip-2.5.0\jszip.js" />
+    <None Include="wwwroot\JSZip-2.5.0\jszip.min.js" />
+    <None Include="wwwroot\pdfmake-0.1.36\pdfmake.js" />
+    <None Include="wwwroot\pdfmake-0.1.36\pdfmake.min.js" />
+    <None Include="wwwroot\pdfmake-0.1.36\vfs_fonts.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+</Project>

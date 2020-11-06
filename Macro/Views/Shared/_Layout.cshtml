@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Macro</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/datatables.min.css" />
+    <link href="~/Buttons-1.6.3/css/buttons.dataTables.css" />
+
+    <link href="~/favo.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <style>
+        .card-header {
+            background: #462E65;
+            background: -moz-linear-gradient(left, #462E65 0%, #6D2A75 100%);
+            background: -webkit-linear-gradient(left, #462E65 0%, #6D2A75 100%);
+            background: linear-gradient(to right, #462E65 0%, #6D2A75 100%);
+            color: aliceblue;
+        }
+
+        .navbar-brand {
+            background: -webkit-linear-gradient(left, #462E65 0%, #973AA2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h1 {
+            /*width: 30%;*/
+            font-size: 50px;
+            background: -webkit-linear-gradient(left, #462E65 0%, #973AA2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Macro</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <p class="nav navbar-text navbar-right">Hello, @User.Identity.Name; @ClaimsLoader.Role</p>
+                    <ul class="navbar-nav flex-grow-1">
+                        @*<li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>*@
+                        <li class="btn-group">
+                            <button type="button" class="nav-item" style="border:none; background-color:transparent;" data-toggle="dropdown">
+                                Circuits <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Circuits" asp-action="Index">Active Circuits</a></li>
+                                @if (ClaimsLoader.Role == "Administrator")
+                                {
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Circuits" asp-action="DiscoIndex">Discontinued Circuits</a></li>
+                                }
+                            </ul>
+                        </li>
+                        @if (ClaimsLoader.Role == "Administrator")
+                        {
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="Softwares" asp-action="Index">Software</a></li>
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="Administration" asp-action="Index">Admin</a></li>
+                        }
+                        @*<a class="nav-link text-dark" asp-area="" asp-controller="Circuits" asp-action="Index">Circuits</a>*@
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        @if (AdminSettings.ScheduledBool == true)
+        {
+            <div class="alert alert-dismissible alert-info">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Heads up!</strong> Maintenance has been scheduled for @AdminSettings.MaintenaceInfo at @AdminSettings.MaintenaceTimeInfo.
+            </div>
+        }
+        else if (AdminSettings.MaintenaceInfo == null || AdminSettings.ScheduledBool == false)
+        {
+            <div class="alert alert-dismissible alert-info" hidden>
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+            </div>
+        }
+    </header>
+    <div class="container" id="bodyContent">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - Macro @*- <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/datatables.min.js"></script>
+    <script src="~/js/FileSaver.js"></script>
+    <script src="~/pdfmake-0.1.36/pdfmake.js"></script>
+    <script src="~/pdfmake-0.1.36/vfs_fonts.js"></script>
+    <script src="~/Buttons-1.6.3/js/buttons.bootstrap.min.js"></script>
+    <script src="~/Buttons-1.6.3/js/dataTables.buttons.min.js"></script>
+    <script src="~/JSZip-2.5.0/jszip.min.js"></script>
+    <script src="~/Buttons-1.6.3/js/buttons.html5.min.js"></script>
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

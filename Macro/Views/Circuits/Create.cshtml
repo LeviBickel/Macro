@@ -1,0 +1,84 @@
+﻿@model Macro.Models.Circuit
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Circuit</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CCSD" class="control-label"></label>
+                <input asp-for="CCSD" class="form-control" />
+                <span asp-validation-for="CCSD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Domain" class="control-label"></label>
+                <input asp-for="Domain" class="form-control" />
+                <span asp-validation-for="Domain" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CKT_Type" class="control-label"></label>
+                <input asp-for="CKT_Type" class="form-control" />
+                <span asp-validation-for="CKT_Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Source" class="control-label"></label>
+                <input asp-for="Source" class="form-control" />
+                <span asp-validation-for="Source" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SInt" class="control-label"></label>
+                <input asp-for="SInt" class="form-control" />
+                <span asp-validation-for="SInt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SIP" class="control-label"></label>
+                <input asp-for="SIP" class="form-control" />
+                <span asp-validation-for="SIP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Destination" class="control-label"></label>
+                <input asp-for="Destination" class="form-control" />
+                <span asp-validation-for="Destination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DInt" class="control-label"></label>
+                <input asp-for="DInt" class="form-control" />
+                <span asp-validation-for="DInt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DIP" class="control-label"></label>
+                <input asp-for="DIP" class="form-control" />
+                <span asp-validation-for="DIP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CCO" class="control-label"></label>
+                <input asp-for="CCO" class="form-control" />
+                <span asp-validation-for="CCO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

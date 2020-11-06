@@ -1,0 +1,186 @@
+﻿@model IEnumerable<Macro.Models.Circuit>
+
+@{
+    ViewData["Title"] = "Circuits";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Active</h1><br/>
+<style>
+    #bodyContent{
+        margin-left:0px;
+    }
+    div.dataTables_length {
+        margin-top: 1em;
+    }
+</style>
+@if (ClaimsLoader.Role == "Administrator")
+{
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+}
+<table class="display" id="Table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CCSD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Domain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CKT_Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Source)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SInt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SIP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DInt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DIP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CCO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CCSD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Domain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CKT_Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Source)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SInt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SIP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Destination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DInt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DIP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CCO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user)
+            </td>
+            <td>
+                @if (ClaimsLoader.Role == "Administrator" || ClaimsLoader.Role == "Modify")
+                {
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit |</a>
+                }
+
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+
+                @if (ClaimsLoader.Role == "Administrator")
+                {
+                    <a asp-action="Delete" asp-route-id="@item.ID">| Delete</a>
+                }
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section Scripts{ 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#Table').DataTable({
+            dom: 'Blfrtip',
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            buttons: {
+                buttons: [
+                    {
+                        extend: 'pdfHtml5',
+                        title: function () {
+                            return "Circuits";
+                        },
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        text: 'PDF',
+                        exportOptions: {
+                            modifier: {
+                                page: 'current'
+                            }
+                        }
+
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        title: function () {
+                            return "Circuits";
+                        },
+                        text: 'Excel',
+                        exportOptions: {
+                            modifier: {
+                                page: 'current'
+                            }
+                        }
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        title: function () {
+                            return "Circuits";
+                        },
+                        text: 'CSV',
+                        exportOptions: {
+                            modifier: {
+                                page: 'current'
+                            }
+                        }
+                    }
+                ],
+                dom: {
+                    button: {
+                        className: 'btn btn-primary'
+                    }
+                }
+                
+            }
+        });
+    });
+</script>
+}
